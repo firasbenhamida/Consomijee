@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+	<title><ui:insert name="title"></ui:insert></title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="keywords"
+			content="Super Market Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+
+	<h:outputStylesheet name="css/bootstrap.css" />
+	<h:outputStylesheet name="css/font-awesome.css" />
+	<h:outputStylesheet name="css/skdslider.css" />
+	<h:outputStylesheet name="css/style.css" />
+	<h:outputStylesheet
+		name='//fonts.googleapis.com/css?family=Raleway:400,100,100italic,200,200italic,300,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic'
+		rel='stylesheet' type='text/css' />
+	<h:outputStylesheet
+		name='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
+		rel='stylesheet' type='text/css' />
+
+	<link>
+		<ui:insert name="css"></ui:insert></link>
+
+
+</h:head>
+
+<h:body>
+
+	<ui:include src="/template/Shared/header.xhtml"></ui:include>
+
+	<div class="wrapper">
+		<ui:insert name="content"></ui:insert>
+
+		<hr />
+	</div>
+
+
+	<ui:include src="/template/Shared/footer.xhtml"></ui:include>
+
+	<a href="#" title="" class="scrollTop"><i class="fa fa-arrow-up"></i></a>
+
+
+	<!--  Scripts  -->
+	<h:outputScript name="js/bootstrap.min.js" />
+	<h:outputScript name="js/easing.js" />
+	<h:outputScript name="js/jquery-1.11.1.min.js" />
+	<h:outputScript name="js/minicart.min.js" />
+	<h:outputScript name="js/move-top.js" />
+	<h:outputScript name="js/responsiveslides.min.js" />
+	<h:outputScript name="js/skdslider.min.js" />
+
+	<script type="application/x-javascript">
+		 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } 
+	</script>
+
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$(".scroll").click(function(event) {
+				event.preventDefault();
+				$('html,body').animate({
+					scrollTop : $(this.hash).offset().top
+				}, 1000);
+			});
+		});
+	</script>
+	<script type="text/javascript">
+		jQuery(document).ready(function() {
+			jQuery('#demo1').skdslider({
+				'delay' : 5000,
+				'animationSpeed' : 2000,
+				'showNextPrev' : true,
+				'showPlayButton' : true,
+				'autoSlide' : true,
+				'animationType' : 'fading'
+			});
+
+			jQuery('#responsive').change(function() {
+				$('#responsive_wrapper').width(jQuery(this).val());
+			});
+
+		});
+	</script>
+	<script>
+		// Mini Cart
+		paypal.minicart.render({
+			action : '#'
+		});
+
+		if (~window.location.search.indexOf('reset=true')) {
+			paypal.minicart.reset();
+		}
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+				};
+			 */
+
+			$().UItoTop({
+				easingType : 'easeOutQuart'
+			});
+
+		});
+	</script>
+
+	<ui:insert name="scripts"></ui:insert>
+</h:body>
+</html>

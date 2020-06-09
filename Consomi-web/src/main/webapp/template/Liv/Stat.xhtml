@@ -1,0 +1,123 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/Shared/layout.xhtml">
+
+
+	<ui:define name="title">Stat</ui:define>
+
+
+	<ui:define name="content">
+
+<html>
+ 
+ 
+ 
+
+ 
+ 
+ <script type="text/javascript">
+ 
+</script>
+ 
+  
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+    function printInfo1(a1,e1,a2,e2,a3,e3,a4,e4) {
+  	  
+        alert("Name: " + a1 + e1  );
+      
+    var A1 = parseInt(a1);
+    var A2 = parseInt(a2);
+    var A3 = parseInt(a3);
+    var A4 = parseInt(a4);
+
+    
+    
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Mail', 'Livraison par Livreur'],
+          [e1,     A1],
+          [e2,      A2],
+          [e3,  A3],
+          [e4, A4]
+
+        ]);
+
+        var options = {
+          title: 'Livraison par Livreur',
+          pieHole: 0.4,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options);
+      }
+    }
+    </script>
+ 
+  
+ 
+    <script type='text/javascript' src='https://www.gstatic.com/charts/loader.js'></script>
+    <script type='text/javascript'>
+    function printInfo2(a1,e1,a2,e2,a3,e3,a4,e4) {
+    	  
+        alert("Name: " + a1 + e1  );
+        var A1 = parseInt(a1);
+        var A2 = parseInt(a2);
+        var A3 = parseInt(a3);
+        var A4 = parseInt(a4);
+        
+     google.charts.load('current', {
+       'packages': ['geochart'],
+       // Note: you will need to get a mapsApiKey for your project.
+       // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+       'mapsApiKey': 'AIzaSyBG-ZwPJQz6ml5i0hz80mUE39mL-Vd7he8'
+     });
+     google.charts.setOnLoadCallback(drawMarkersMap);
+
+      function drawMarkersMap() {
+      var data = google.visualization.arrayToDataTable([
+        ['City',   'Livraison'],
+        [e1,     A1],
+        [e2,      A2],
+        [e3,  A3],
+        [e4, A4]
+
+       
+      ]);
+
+      var options = {
+        region: 'TN',
+        displayMode: 'markers',
+        colorAxis: {colors: ['green', 'blue']}
+      };
+
+      var chart = new google.visualization.GeoChart(document.getElementById('chart_div'));
+      chart.draw(data, options);
+    };
+    }
+    </script>
+ 
+  
+  
+  <div>
+			<h:form>
+  <h:commandButton type="button" value="Show Stat livreur par livraison" onclick="printInfo1('#{LivBean.GetL()[0].getactivite()}','#{LivBean.GetL()[0].getMail()}','#{LivBean.GetL()[1].getactivite()}','#{LivBean.GetL()[1].getMail()}','#{LivBean.GetL()[2].getactivite()}','#{LivBean.GetL()[2].getMail()}','#{LivBean.GetL()[3].getactivite()}','#{LivBean.GetL()[3].getMail()}')"/>
+</h:form>
+<h:form>
+  <h:commandButton type="button" value="Show Stat livraison par adresse" onclick="printInfo2('#{LivBean.GetL()[0].getactivite()}','#{LivBean.GetL()[0].getadresse()}','#{LivBean.GetL()[1].getactivite()}','#{LivBean.GetL()[1].getadresse()}','#{LivBean.GetL()[2].getactivite()}','#{LivBean.GetL()[2].getadresse()}','#{LivBean.GetL()[3].getactivite()}','#{LivBean.GetL()[3].getadresse()}')"/>
+</h:form>
+   <div id="donutchart" style="width: 900px; height: 500px;"></div>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+  </div>
+   <a href="/Consomi-web/template/Liv/Livreur.jsf">Back</a>
+</html>
+
+
+
+	</ui:define>
+
+</ui:composition>

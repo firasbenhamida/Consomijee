@@ -1,0 +1,59 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/Shared/layout.xhtml">
+
+
+	<ui:define name="title">Livreur</ui:define>
+
+
+	<ui:define name="content">
+<h:form>
+<h:dataTable value = "#{LivBean.GetL()}" var = "Livreur"
+   styleClass = "LivreurTable"
+   headerClass = "LivreurTableHeader"
+   rowClasses = "LivreurTableOddRow,LivreurTableEvenRow"
+   cellpadding = "10000"
+   cellspacing = "10000"
+   width = "1000">
+   
+   
+   <h:column>    				
+      <f:facet name = "header">Mail</f:facet>    				
+      #{Livreur.getMail()}
+   </h:column>
+   
+   <h:column>
+      <f:facet name = "header">adresse</f:facet>
+      #{Livreur.getadresse()}
+   </h:column>
+   
+   <h:column>
+      <f:facet name = "header">Nombre de livraison</f:facet>
+      #{Livreur.getactivite()}
+   </h:column>
+   
+   <h:column>
+      <f:facet name = "header">Prime Par km parcourue</f:facet>
+      #{Livreur.getetat()}
+   </h:column>
+   <h:column>
+      <f:facet name = "header">Delete</f:facet>
+        <h:commandButton  value="Delete" action="#{LivBean.D(Livreur.getidU())}"/>
+       
+
+   </h:column>
+   
+  
+</h:dataTable>
+</h:form>
+<h:form>
+<h:commandButton value="Add" action="/template/Liv/Add?faces-redirect=true"/>
+</h:form>
+<a href="/Consomi-web/template/Liv/Stat.jsf">Stat</a>
+
+
+	</ui:define>
+
+</ui:composition>
